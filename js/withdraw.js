@@ -10,11 +10,6 @@ document.getElementById('btn-withdraw').addEventListener('click', function () {
 
 
 
-    //step 
-
-    const currentWithDrawTotal = previousWithDrawTotal + newWithdrawAmmount;
-
-    withdrawTotalElement.innerText = currentWithDrawTotal;
 
 
 
@@ -24,13 +19,24 @@ document.getElementById('btn-withdraw').addEventListener('click', function () {
     const previousBlanaceTotalString = balanceTotalElement.innerText;
     const previousBlanaceTotal = parseFloat(previousBlanaceTotalString);
 
+    //clear field 
+    withDrawField.value = '';
 
+    // checking balance is there 
+
+    if (newWithdrawAmmount > previousBlanaceTotal) {
+        alert("eto taka nai , paknami koris nah !")
+        return;
+    }
+
+    //step 
+    const currentWithDrawTotal = previousWithDrawTotal + newWithdrawAmmount;
+    withdrawTotalElement.innerText = currentWithDrawTotal;
 
     ///new balance 
-
     const newBalanceTotal = previousBlanaceTotal - newWithdrawAmmount;
     balanceTotalElement.innerText = newBalanceTotal;
 
-    withDrawField.value = '';
+
 
 })
